@@ -22,26 +22,23 @@ jobs:
           name: Install Dependencies
           command: npm install
 
+      # Install Azure CLI
       - run:
           name: Install Azure CLI
           command: |
-            sudo apt-get update
-            sudo apt-get install -y apt-transport-https lsb-release software-properties-common dirmngr
-            curl -sL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-            sudo add-apt-repository "$(curl -sL https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list)"
-            sudo apt-get update
-            sudo apt-get install -y azure-cli
+            curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
+      # Login to Azure using Service Principal
       - run:
-          name: Azure Login
+          name: Azure CLI Login
           command: |
             az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
 
+      # Login to Azure Container Registry (ACR)
       - run:
-          name: ACR Login
-          command: |
-            az acr login --name $ACR_NAME
-
+          name: Login to ACR
+          command: az acr login --name $ACR_NAME
+          
       - run:
           name: Build and Push Docker Image
           command: |
