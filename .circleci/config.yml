@@ -3,14 +3,14 @@ version: 2.1
 executors:
   kubectl-executor:
     docker:
-      - image: circleci/node:14
+      - image: circleci/node:16
     environment:
       KUBECONFIG: /home/circleci/.kube/config
 
 jobs:
   build-and-push:
     docker:
-      - image: circleci/node:14
+      - image: circleci/node:16
     steps:
       - checkout
 
