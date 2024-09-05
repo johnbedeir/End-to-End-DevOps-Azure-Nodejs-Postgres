@@ -1,5 +1,5 @@
 node_modules
-package*
+package-lock.json
 .terraform
 .terraform*
 *tfstate*
