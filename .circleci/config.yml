@@ -86,7 +86,6 @@ jobs:
           command: |
             mkdir -p ~/.kube/
             echo "$KUBECONFIG_CONTENT" | base64 --decode > ~/.kube/config
-            chmod 600 ~/.kube/config
 
       - run:
           name: Deploy to Kubernetes
