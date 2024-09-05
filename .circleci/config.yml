@@ -84,7 +84,9 @@ jobs:
       - run:
           name: Decode kubeconfig
           command: |
-            mkdir -p ~/.kube
+            mkdir -p ~/.kube/config
+            chmod 600 ~/.kube/config
+            echo "$KUBECONFIG_CONTENT" | head -c 100
             echo "$KUBECONFIG_CONTENT" | base64 --decode > ~/.kube/config
 
       - run:
