@@ -9,7 +9,7 @@ This project is a complete end-to-end DevOps pipeline to deploy a Nodejs applica
 ```
 .
 |
-├── app.js                      # Go App application files
+├── app.js                      # Nodejs App
 │   package.json
 │   Dockerfile                  # Dockerfile for the application
 |   docker-compose.yml          # Docker Compose for the app and Database
